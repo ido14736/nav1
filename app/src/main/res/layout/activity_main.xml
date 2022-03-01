@@ -13,16 +13,80 @@
         mapbox:mapbox_cameraTargetLat="32.070"
         mapbox:mapbox_cameraTargetLng="34.845"
         mapbox:mapbox_styleUrl="mapbox://styles/mapbox/streets-v10"
-        mapbox:mapbox_cameraZoom="15"/>
+        mapbox:mapbox_cameraZoom="16" >
+
+        <com.google.android.material.tabs.TabLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/routeTypeTL"
+            mapbox:tabIndicatorColor="@color/mapbox_navigation_route_layer_blue"
+            mapbox:tabTextColor="@color/mapbox_navigation_route_layer_blue">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="cycling"/>
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="driving"/>
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="walking"/>
+        </com.google.android.material.tabs.TabLayout>
+    </com.mapbox.mapboxsdk.maps.MapView>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/navigationBT"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:enabled="false"
-        android:text="Start Nav"
+        android:text="Start Navigation"
         mapbox:layout_constraintBottom_toBottomOf="parent"
         mapbox:layout_constraintEnd_toEndOf="parent"
         mapbox:layout_constraintStart_toStartOf="parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="45dp">
+
+        <EditText
+            android:id="@+id/srcET"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:hint="Choose Source Location"
+            android:textColor="@color/design_default_color_secondary_variant"
+            android:layout_alignParentLeft="true"
+            android:layout_toLeftOf="@+id/currentLocationCB"
+            android:drawableRight="@drawable/cancel"
+            android:drawableLeft="@drawable/src_marker"
+            android:textSize="14dp"
+            />
+
+        <CheckBox
+            android:id="@+id/currentLocationCB"
+            android:layout_width="96dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Use Current Location"
+            android:textSize="14dp"/>
+
+        <EditText
+            android:id="@+id/dstET"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/srcET"
+            android:hint="Choose Destination Location"
+            android:textColor="@color/purple_500"
+            android:drawableRight="@drawable/cancel"
+            android:drawableLeft="@drawable/dst_marker"
+            android:textSize="14dp"/>
+    </RelativeLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
